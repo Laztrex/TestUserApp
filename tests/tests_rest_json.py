@@ -1,7 +1,7 @@
 import json
 from unittest import mock, TestCase
 
-import main_json as my_module
+import __main_json__ as my_module
 
 
 class TestUserApp(TestCase):
@@ -30,8 +30,8 @@ class TestUserApp(TestCase):
         """test add user"""
         mock_open = mock.mock_open(read_data=self.deceiver_json)
         with mock.patch('builtins.open', mock_open):
-            response = self.app.post(self.add_url, data={"id": 111, "name": "PyConf"})
-            self.assertEqual(b'"Add user PyConf"\n', response.data)
+            response = self.app.post(self.add_url, data={"id": 111, "name": "TrueConf"})
+            self.assertEqual(b'"Add user TrueConf"\n', response.data)
 
     def test_put_user(self):
         """test rename user"""

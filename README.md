@@ -4,11 +4,27 @@
 ## Description
 Capability:  
 - **Add User** 
-- **Get list User** 
+~~~
+POST:: http://localhost:5000/users
+{'id': 42, 'name': 'Douglas Adams'}
+~~~ 
+- **Get list User**
+~~~
+GET:: http://localhost:5000/users
+~~~ 
 - **Get User by Id** 
-- **Edit User by Id** 
+~~~
+GET:: http://localhost:5000/users/1
+~~~ 
+- **Edit User by Id**
+ ~~~
+PUT:: http://localhost:5000/users/1
+{'name': Alexey}
+~~~ 
 - **Delete User by Id** 
-
+~~~
+DELETE:: http://localhost:5000/users/1
+~~~ 
 Run **option 1** (JSON format):
 ~~~
 python main_json.py

@@ -83,14 +83,14 @@ class User(Resource):
         return f"Fix _name_ user with id {_id} on {params['name']}", 201
 
     def delete(self, _id):
-        self._write_json_with_condition(data=self._read_json_with_condition(condition=_id))
+        self._write_json_with_condition(data=self._read_json_with_condition(state=_id))
         return f"User with id {_id} is deleted.", 200
 
-    def _read_json_with_condition(self, condition=None):
+    def _read_json_with_condition(self, state=None):
         with open('files/users.json', "r", encoding='utf-8') as read_file:
             loaded_json_file = json.load(read_file)
-            if condition:
-                loaded_json_file = [user for user in loaded_json_file if user['id'] != condition]
+            if state:
+                loaded_json_file = [user for user in loaded_json_file if user['id'] != state]
         return loaded_json_file
 
     def _write_json_with_condition(self, data):
