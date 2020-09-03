@@ -1,6 +1,6 @@
-from pony.orm import Database, Required, Optional
 from flask_login import UserMixin
 from datetime import datetime
+from pony.orm import Database, Required, Optional
 
 
 db = Database()

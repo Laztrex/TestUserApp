@@ -1,9 +1,10 @@
-from app import app
-from models import db
+from datetime import datetime
 from flask import render_template, request, flash, redirect, abort
 from flask_login import current_user, logout_user, login_user, login_required
-from datetime import datetime
 from pony.orm import flush
+
+from app import app
+from models import db
 
 
 @app.route('/')
@@ -63,7 +64,6 @@ def delete_user():
         return redirect('/reg')
     else:
         return render_template('del.html')
-
 
 
 @app.route('/logout')

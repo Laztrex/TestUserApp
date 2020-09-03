@@ -1,6 +1,5 @@
 import re
 from string import punctuation
-import os
 from flask import Flask, request, jsonify, Response
 from flask_restful import Api, Resource, reqparse
 import json
@@ -53,7 +52,6 @@ class User(Resource):
         parser.add_argument("name")
         params, errors = theme_validate(parser.parse_args())
 
-        # TODO: проверять на кол-во двух полей id и name
         if errors:
             return resp(400, {"errors": errors})
 
@@ -78,25 +76,25 @@ class User(Resource):
                 user_id['name'] = params['name']
                 break
         else:
-            return f"User with id {params['id']} already exists", 400
+            return f"User with id {_id} already exists", 400
 
         self._write_json_with_condition(data=result)
 
-        return f"Fix user {_id}", 201
+        return f"Fix _name_ user with id {_id} on {params['name']}", 201
 
     def delete(self, _id):
         self._write_json_with_condition(data=self._read_json_with_condition(condition=_id))
         return f"User with id {_id} is deleted.", 200
 
     def _read_json_with_condition(self, condition=None):
-        with open(os.path.dirname(__file__) + '/files/users.json', "r", encoding='utf-8') as read_file:
+        with open('files/users.json', "r", encoding='utf-8') as read_file:
             loaded_json_file = json.load(read_file)
             if condition:
                 loaded_json_file = [user for user in loaded_json_file if user['id'] != condition]
         return loaded_json_file
 
     def _write_json_with_condition(self, data):
-        with open(os.path.dirname(__file__) + '/files/users.json', "w", encoding='utf-8') as write_file:
+        with open('files/users.json', "w", encoding='utf-8') as write_file:
             json.dump(data, write_file, indent=2, ensure_ascii=False)
 
 

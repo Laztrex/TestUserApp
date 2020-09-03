@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from pony.flask import Pony
+
 from config import config
 from models import db
 
