@@ -27,7 +27,7 @@ DELETE:: http://localhost:5000/users/1
 ~~~ 
 Run **option 1** (JSON format):
 ~~~
-python main_json.py
+python __main_json__.py
 ~~~
 
 **Run *expanded* option 2** (with Pony ORM and HTML-structure)
